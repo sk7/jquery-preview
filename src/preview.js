@@ -192,23 +192,23 @@ function Preview(elem, options) {
         }
 
         var d = {
-          name : n,
+          name : 'embedly_'+n,
           type : 'hidden',
-          id : 'id_'+n,
+          id : 'id_embedly_'+n,
           value : v
         };
 
         // It's possible that the title or description or something else is
         // already in the form. If it is then we need to Love them for who they
         // are and fill in values.
-        var e = form.find('#id_'+n);
+        var e = form.find('#id_embedly_'+n);
 
         if(e.length) {
           // It's hidden, use it
           if (e.attr('type') === 'hidden') {
             // jQuery doesn't allow changing the 'type' attribute
             delete d.type;
-            
+
             e.attr(d);
           } else{
             // Be careful here.
@@ -269,7 +269,7 @@ function Preview(elem, options) {
       // If we already looked for a url, there will be an original_url hidden
       // input that we should look for and compare values. If they are the
       // same we will ignore.
-      var original_url = this.form.find('#id_original_url').val();
+      var original_url = this.form.find('#id_embedly_original_url').val();
       if (original_url === url) {
         return true;
       }
